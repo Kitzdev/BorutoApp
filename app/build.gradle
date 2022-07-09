@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'kotlinx-serialization'
@@ -10,7 +10,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "dev.kitzdev.borutoapp"
+        applicationId "com.example.borutoapp"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -34,12 +34,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        useIR = true
     }
     buildFeatures {
         compose true
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion '1.5.21'
     }
     packagingOptions {
         resources {
@@ -50,12 +52,14 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
+    implementation 'androidx.activity:activity-compose:1.4.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -76,9 +80,9 @@ dependencies {
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
     // Paging 3.0
-    implementation 'androidx.paging:paging-compose:1.0.0-alpha15'
+    implementation 'androidx.paging:paging-compose:1.0.0-alpha14'
 
-    // Kotlinx Serialization
+    // KotlinX Serialization
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2"
 
     // DataStore Preferences
@@ -88,7 +92,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.38.1"
     kapt "com.google.dagger:hilt-android-compiler:2.38.1"
     kapt 'androidx.hilt:hilt-compiler:1.0.0'
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-alpha03'
 
     // Coil
     implementation("io.coil-kt:coil-compose:1.3.2")
@@ -109,7 +113,7 @@ dependencies {
     // Testing
     androidTestImplementation "androidx.test:runner:1.4.0"
     androidTestImplementation "androidx.test:rules:1.4.0"
-    androidTestImplementation "androidx.test.ext:junit:1.1.3"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
 
